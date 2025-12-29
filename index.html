@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year, Twinkle 💖</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #0f0f23, #1a1a2e);
+            color: #fff;
+            overflow-x: hidden;
+            transition: all 1s ease;
+        }
+        .welcome {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+        .welcome.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .welcome h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #fff;
+        }
+        .welcome button {
+            background: #ff6b9d;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .welcome button:hover {
+            transform: scale(1.1);
+        }
+        .main {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            animation: fadeIn 2s ease;
+        }
+        .main.show {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .wish {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px #ff6b9d;
+        }
+        .image {
+            margin: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+        .shayri {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 30px 0;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        .music {
+            margin-top: 30px;
+            text-align: center;
+        }
+        audio {
+            width: 100%;
+            max-width: 300px;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 2rem;
+            animation: float 6s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+            .wish { font-size: 2rem; }
+            .shayri { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="welcome" id="welcome">
+        <h1>Welcome, Twinkle 💖</h1>
+        <button onclick="enterSite()">Touch to Enter</button>
+    </div>
+    
+    <div class="main" id="main">
+        <div class="wish">
+            Happy New Year, My Love! <br>
+            May this year bring us endless joy, love, and twinkling moments together. 💖✨
+        </div>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Female couple holding hands" class="image">
+        <div class="shayri">
+            "Teri aankhon mein hai woh jadoo, <br>
+            Jo har pal ko bana deta hai naya. <br>
+            Saal naya, pyar purana, <br>
+            Tere bina kuch bhi nahi, Twinkle mera saathi. 💖" <br><br>
+            "Dil ki baat sun, zara, <br>
+            Tere bina adhura hai mera har din. <br>
+            Naye saal ki shuruaat, <br>
+            Tere hath mein hath, humesha ke liye. ✨"
+        </div>
+        <div class="music">
+            <p>Listen to our song:</p>
+            <audio controls autoplay loop>
+                <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        function enterSite() {
+            const welcome = document.getElementById('welcome');
+            const main = document.getElementById('main');
+            welcome.classList.add('hidden');
+            setTimeout(() => {
+                main.classList.add('show');
+                createHearts();
+            }, 1000);
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+</html>
